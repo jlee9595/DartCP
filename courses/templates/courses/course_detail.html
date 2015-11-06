@@ -1,0 +1,23 @@
+{% extends "courses/base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="base_style.css">
+
+<title>{% block title %} {{ course.dept.abbrv }} {{course.num}} {% endblock %}</title>
+
+{% block content %}
+<h1>{{ course.dept.abbrv }} {{ course.number }}: {{ course.name }} </h1>
+<p>
+	Professors:
+	{% for prof in course.professors.all %}
+		{{ prof.first_name }} {{ prof.last_name }}, 
+	{% endfor %}
+</p>
+<p>Description: {{course.description}}
+<p>Enrollment: {{ course.enrollment }}/{{ course.limit }}
+<p>Period: {{ course.period }}</p>
+<p>Location: {{ course.building }} {{ course.room }}</p>
+<p>CRN: {{ course.CRN }}
+
+{% endblock %}

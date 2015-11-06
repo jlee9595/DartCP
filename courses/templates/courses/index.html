@@ -1,0 +1,20 @@
+{% extends "courses/base.html" %}
+{% load staticfiles %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'courses/style.css' %}" /> -->
+
+{% block content %}
+
+	<h1>Courses</h1>
+
+
+{% if course_list %}
+    <ul>
+    {% for course in course_list %}
+        <li><a href="{% url 'courses:course_detail' course.id %}">{{ course.dept.abbrv }} {{ course.num }}: {{ course.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No courses are available.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "courses/base_style.css" %}">
+    <title>{% block title %}Course Picker{% endblock %}</title>
+</head>
+
+<body>
+    <div id="topbar">
+        {% block topbar %}
+        <h1> Dartmouth Course Picker </h1>
+        <ul>
+            <li><a href="{% url 'courses:home' %}">Home</a></li>
+            <li><a href="/courses/">Index</a></li>
+        </ul>
+        <form action="{% url 'courses:search' %}" method="get" id="searchbox">
+            {{ search_form }}
+        </form>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

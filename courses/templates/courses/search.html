@@ -1,0 +1,44 @@
+{% extends "courses/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	<div id="search">
+		<h2>Search Results For "{{entry}}"</h2>
+
+		{% if searchcourses %}
+		<table id="t02">
+			<tr>
+				<th>Course</th>
+				<th></th>
+				<th>Professor</th>
+				<th></th>
+				<th>Period</th>
+				<th></th>
+				<th>Enrollment</th>
+			</tr>
+			{% for course in searchcourses %}
+			<tr>
+				<td><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a></td>
+				<td></td>
+				<td>
+					{% for prof in course.professors.all %}
+						{{prof.first_name}} {{prof.last_name}}
+					{% endfor %}
+				</td>
+				<td></td>
+				<td>
+					{{course.period}}
+				</td>
+				<td></td>
+				<td>
+					{{course.enrollment}}/{{course.limit}}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		{% else %}
+		<p>No results found :(<p>
+		{% endif %}
+	</div>
+{% endblock %}

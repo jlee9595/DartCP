@@ -1,0 +1,55 @@
+{% extends "courses/base.html" %}
+{% load staticfiles %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'courses/style.css' %}" /> -->
+
+{% block content %}
+	<div id="filtered">
+		<h1>Results</h1>
+
+		<table id="t01">
+			<tr>
+				<th>Course</th>
+				<th></th>
+				<th>Professor</th>
+				<th></th>
+				<th>Period</th>
+				<th></th>
+				<th>Enrollment</th>
+				<th></th>
+				<th>WC</th>
+				<th></th>
+				<th>Dist(s)</th>
+			</tr>
+			{% for course in filteredcourses %}
+			<tr>
+				<td><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a></td>
+				<td></td>
+				<td>
+					{% for prof in course.professors.all %}
+						{{prof.first_name}} {{prof.last_name}}
+					{% endfor %}
+				</td>
+				<td></td>
+				<td>
+					{{course.period}}
+				</td>
+				<td></td>
+				<td>
+					{{course.enrollment}}/{{course.limit}}
+				</td>
+				<td></td>
+				<td>
+					{{course.WC}}
+				</td>
+				<td></td>
+				<td>
+					{% for distrib in course.distribs.all %}
+						{{distrib.abbrv}}
+					{% endfor %}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "courses/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	<div id="home">
+		<h3>Pick by department</h3>
+
+		<form action="{% url 'courses:filtered' %}" method="get" id="deptsortlist">
+			{{ form }}
+			<input type="submit" value="Go" />
+		</form>
+	</div>
+{% endblock %}
