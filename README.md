@@ -1,7 +1,9 @@
 # DartCP
 Running at 'http://jlee9595.pythonanywhere.com/'
 
-To run locally, run 'python manage.py runserver'
+Before running locally make sure to have Python and Django (1.7 or later) installed
+
+To run locally, run 'python manage.py runserver' and go to the address specified by the output
 
 This is an individual project that aims to eventually reach a point where the information for all Dartmouth classes would be much less of a pain to access than through the clunky website provided by the college.
 
